@@ -13,7 +13,7 @@
 
 \section*{Polynomials}
 
-A polynomial is an expression of more than two algebraic terms, especially the sum of several terms that contain different powers of the same variable(s).
+A polynomial is an expression composed of algebraic terms, especially the sum of several terms that contain different powers of the same variable(s).
 
 \subsection*{Example}
 Consider the polynomial:
@@ -21,7 +21,7 @@ $$ 3x^4 + 4x^2 + 5 $$
 All powers can be added using the zero product and zero exponent properties:
 $$ 3x^4 + 0x^3 + 4x^2 + 0x^1 + 5x^0 $$
 
-\subsection*{Components of a Polynomial}
+\subsection*{Parts of a Polynomial}
 \begin{itemize}
   \item \textbf{Degree:} The highest exponent of a variable. In the above example, the degree is 7.
   \item \textbf{Term:} A single part of a polynomial. In the above example, there are three non-zero terms; \( 3x^7 \), \( 4x^2 \) and \( 5 \).
@@ -30,32 +30,33 @@ $$ 3x^4 + 0x^3 + 4x^2 + 0x^1 + 5x^0 $$
 
 \subsection*{Representing Polynomials using Python Lists}
 
-A polynomial can be represented using a Python list. Each element in the array corresponds with a term in the polynomial.
+A polynomial can be represented using a Python list. Each item in the list corresponds with a term in the polynomial.
 
 \subsection*{Example 1}
 Consider the polynomial:
-$$ 3x^2 + 4x + 5 $$
+$$ 3x + 2 $$
 This can be represented as a list in Python:
-$$[3, 4, 5] $$
+$$[3, 2] $$
 
 \begin{itemize}
-  \item 3 is the first element in the list and represents the coefficient 3 in the first term \( 3x^2 \).
-  \item 4 is the second element in the list and represents the coefficient 4 in the second term \( 4x \).
-  \item 5 is the third element in the list and represents the constant 5 in the third term \( 5 \).
+  \item The first item in the list, 3, represents the coefficient 3 in the first term of the polynomial (\( 3x \)).
+  \item The second item in the list, 2, represents the coefficient 2 in the second term \( 2 \) of the polynomial (2).
 \end{itemize}
+
+\subsection*{Example 2}
+Consider the polynomial:
+$$ 3x^4 + 0x^3 + 4x^2 + 0x^1 + 5x^0 $$
+This can be represented as a list in Python:
+$$ [3, 0, 4, 0, 5] $$
 
 \section*{Multiplying Polynomials}
 
-When multiplying two polynomials, each term of one polynomial multiplies with each term of the other. The powers of \( x \) are added, and the coefficients are multiplied.
-
+Now that we know how to represent polynomials using Python lists, we can multiply two polynomials.
 Consider two polynomials:
 \begin{itemize}
-  \item \( 3x^2 + 4x + 5 \) represented as \([5, 4, 3]\)
-  \item \( 2x + 1 \) represented as \([1, 2]\)
+  \item \( 3x + 2 \) represented as \([3, 2]\), and
+  \item \( 3x^4 + 4x^2 + 5 \) represented as \([3, 0, 4, 0, 5]\)
 \end{itemize}
-
 The multiplication of these polynomials involves multiplying each term of the first polynomial with each term of the second and summing the results according to the powers of \( x \).
-
-The result is a new polynomial, where the coefficient at each index represents the sum of the products of terms whose powers add up to that index value. For the given example, the result would represent the product of \( (3x^2 + 4x + 5) \) and \( (2x + 1) \).
 
 \end{document}
