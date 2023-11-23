@@ -1,0 +1,61 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\title{Polynomials}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Polynomials}
+
+A polynomial is an expression of more than two algebraic terms, especially the sum of several terms that contain different powers of the same variable(s).
+
+\subsection*{Example}
+Consider the polynomial:
+$$ 3x^4 + 4x^2 + 5 $$
+All powers can be added using the zero product and zero exponent properties:
+$$ 3x^4 + 0x^3 + 4x^2 + 0x^1 + 5x^0 $$
+
+\subsection*{Components of a Polynomial}
+\begin{itemize}
+  \item \textbf{Degree:} The highest exponent of a variable. In the above example, the degree is 7.
+  \item \textbf{Term:} A single part of a polynomial. In the above example, there are three non-zero terms; \( 3x^7 \), \( 4x^2 \) and \( 5 \).
+  \item \textbf{Coefficient:} The number in front of the variable. In the above example, the coefficients are 3, 4 and 5 (note that the degree of the constant term is 0, and since \(x^0\) is 0).
+\end{itemize}
+
+\subsection*{Representing Polynomials using Python Lists}
+
+A polynomial can be represented using a Python list. Each element in the array corresponds with a term in the polynomial.
+
+\subsection*{Example 1}
+Consider the polynomial:
+$$ 3x^2 + 4x + 5 $$
+This can be represented as a list in Python:
+$$[3, 4, 5] $$
+
+\begin{itemize}
+  \item 3 is the first element in the list and represents the coefficient 3 in the first term \( 3x^2 \).
+  \item 4 is the second element in the list and represents the coefficient 4 in the second term \( 4x \).
+  \item 5 is the third element in the list and represents the constant 5 in the third term \( 5 \).
+\end{itemize}
+
+\section*{Multiplying Polynomials}
+
+When multiplying two polynomials, each term of one polynomial multiplies with each term of the other. The powers of \( x \) are added, and the coefficients are multiplied.
+
+Consider two polynomials:
+\begin{itemize}
+  \item \( 3x^2 + 4x + 5 \) represented as \([5, 4, 3]\)
+  \item \( 2x + 1 \) represented as \([1, 2]\)
+\end{itemize}
+
+The multiplication of these polynomials involves multiplying each term of the first polynomial with each term of the second and summing the results according to the powers of \( x \).
+
+The result is a new polynomial, where the coefficient at each index represents the sum of the products of terms whose powers add up to that index value. For the given example, the result would represent the product of \( (3x^2 + 4x + 5) \) and \( (2x + 1) \).
+
+\end{document}
