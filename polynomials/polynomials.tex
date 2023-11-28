@@ -3,7 +3,7 @@
 \usepackage{listings}
 \usepackage{xcolor}
 
-\title{Polynomials}
+\title{Polynomials and Python}
 \author{Christian Isaman}
 \date{}
 
@@ -21,7 +21,7 @@ $$ 7x^4 + 4x^2 + 5 $$
 
 \subsection*{Parts of a Polynomial}
 \begin{itemize}
-    \item \textbf{Term:} A single part of a polynomial. Also known as a monomial. In the above example, there are three non-zero terms; \( 7x^4 \), \( 4x^2 \) and \( 5 \).
+    \item \textbf{Term:} Also known as a monomial, this is a single part of a polynomial.  In the above example, there are three non-zero terms; \( 7x^4 \), \( 4x^2 \) and \( 5 \).
     \item \textbf{Degree:} The exponent of the term with the highest power. The degree of a monomial is its own exponent. The degree of the polynomial above is 4.
     \item \textbf{Coefficient:} The number in front of the variable. In the above example, the coefficients are 7, 4 and 5 (note that the degree of the constant term is 0, and since \(x^0\) is 0).
 \end{itemize}
@@ -35,17 +35,19 @@ A polynomial can be represented using a Python list. The value of the item in th
 
 \subsubsection*{Example}
 Consider the polynomial:
-$$ 7x^4 + 0x^3 + 4x^2 + 0x^1 + 5x^0 $$
+$$ 7x^4 + 0x^3 + 4x^2 + 9x^1 + 5x^0 $$
 This can be represented as a list in Python:
-$$ [7, 0, 4, 0, 5] $$
+$$ [7, 0, 4, 9, 5] $$
 
 \begin{itemize}
     \item The first item in the list, 7, represents the coefficient of the polynomial's first term (\( 7x^4 \)). The degree of the term is 4, which is equal to the length of the list (5) minus the index of the list's first item (0) minus 1 (\( 5 - 0 - 1 = 4 \)).
     \item The second item in the list, 0, represents the coefficient of the polynomial's second term (\( 0x^3 \)). The degree of the term is 3, which is equal to the length of the list (5) minus the index of the list's second item (1) minus 1 (\( 5 - 1 - 1 = 3 \)).
     \item The third item in the list, 4, represents the coefficient of the polynomial's third term (\( 4x^2 \)). The degree of the term is 2, which is equal to the length of the list (5) minus the index of the list's third item (2) minus 1 (\( 5 - 2 - 1 = 2 \)).
-    \item The fourth item in the list, 0, represents the coefficient of the polynomial's fourth term (\( 0x^1 \)). The degree of the term is 1, which is equal to the length of the list (5) minus the index of the list's fourth item (3) minus 1 (\( 5 - 3 - 1 = 1 \)).
+    \item The fourth item in the list, 9, represents the coefficient of the polynomial's fourth term (\( 9x^1 \)). The degree of the term is 1, which is equal to the length of the list (5) minus the index of the list's fourth item (3) minus 1 (\( 5 - 3 - 1 = 1 \)).
     \item The fifth item in the list, 5, represents the coefficient of the polynomial's fifth term (\( 5x^0 \)). The degree of the term is 0, which is equal to the length of the list (5) minus the index of the list's fifth item (4) minus 1 (\( 5 - 4 - 1 = 0 \)).
 \end{itemize}
+
+Note that the length of the list is equal to the degree of the polynomial plus 1. We add 1 to the degree of the polynomial because the list includes a term for each degree from 0 up to and including the polynomial's highest degree.
 
 \section*{Multiplying Polynomials}
 
@@ -54,28 +56,40 @@ $$ (a + b)(c + d) = ac + ad + bc + bd $$
 
 \subsection*{Example}
 Consider the product of two polynomials:
-$$ (3x^1+2x^0)(3x^4 + 0x^3 + 4x^2 + 0x^1 + 5x^0) $$
+$$ (3x^1+2x^0)(7x^4 + 0x^3 + 4x^2 + 9x^1 + 5x^0) $$
 To expand the product of the polynomials we will multiply each term of the first polynomial by each term of the second polynomial and then sum all the products:
 
-$$ 3x^1(3x^4 + 0x^3 + 4x^2 + 0x^1 + 5x^0) = 9x^5 + 0x^4 + 12x^3 + 0x^2 + 15x^1 $$
+$$ 3x^1(7x^4 + 0x^3 + 4x^2 + 9x^1 + 5x^0) = 21x^5 + 0x^4 + 12x^3 + 27x^2 + 15x^1 $$
 \begin{center}
     \textit{Multiplication of the first term of the first polynomial with each term of the second polynomial.}
 \end{center}
 
-$$ 2x^0(3x^4 + 0x^3 + 4x^2 + 0x^1 + 5x^0) = 6x^4 + 0x^3 + 8x^2 + 0x^1 + 10x^0 $$
+$$ 2x^0(7x^4 + 0x^3 + 4x^2 + 9x^1 + 5x^0) = 14x^4 + 0x^3 + 8x^2 + 18x^1 + 10x^0 $$
 \begin{center}
     \textit{Multiplication of the second term of the first polynomial with each term of the second polynomial.}
 \end{center}
 
 \begin{align*}
-      & \phantom{+} 9x^5 + 0x^4 + 12x^3 + 0x^2 + 15x^1                                           \\
-    + & \phantom{+} \phantom{9x^5 + {}} 6x^4 + \phantom{1} 0x^3 + 8x^2 + \phantom{1}0x^1 + 10x^0 \\
+      & 21x^5 + \phantom{1} 0x^4 + 12x^3 + 27x^2 + 15x^1                              \\
+    + & \phantom{21x^5} + 14x^4 + \phantom{1} 0x^3 + \phantom{2} 8x^2 + 18x^1 + 10x^0 \\
     \cline{2-2}
-      & \phantom{+} 9x^5 + 6x^4 + 12x^3 + 8x^2 + 15x^1 + 10x^0                                   \\
+      & 21x^5 + 14x^4 + 12x^3 + 35x^2 + 33x^1 + 10x^0
 \end{align*}
+
+
+
 \begin{center}
     \textit{Sum of all the products.}
 \end{center}
+
+\subsection*{Solving the Problem using Python}
+As we can see from the solution above, the expanded polynomial has 6 terms. The process for solving in python is straightforward—we will use nested loops to multiply each term of the first polynomial by each term of the second polynomial. The result of each multiplication will be added to a solution list.. The solution list can then be represented as a polynomial using the opposite process of the one described in the previous section.
+
+The degree of the expanded polynomial can be determined by adding the degrees of the two original polynomials. This is because when multiplying polynomials, each term of the first polynomial is multiplied by each term of the second polynomial, and the highest degree term in the expanded polynomial comes from multiplying the highest degree terms of each original polynomial together. In the example above, the highest degree term in the first polynomial is \( 7x^4 \) and in the second is \( 3x^1 \), so the degree of the expanded polynomial is the sum of the two degrees, \(4 + 1 = 5 \).
+
+Since the length of a list that represents a polynomial is equal to the degree of the polynomial plus 1, the length of the solution list will be equal to the degree of the expanded polynomial plus 1. We can also determine the length of the solution list by adding the lengths of the two original lists and subtracting 1. This works because 
+
+Therefore, when multiplying two polynomials of degrees 4 and 1 respectively, the resulting polynomial will have a degree of . The corresponding Python list needs to accommodate terms from degree 0 to 5, which requires a list of length .However, when calculating the length of the solution list, we consider the lengths of the original lists (5 for the first and 2 for the second), adding them and then subtracting 1 to avoid double-counting the degree 0 term, resulting in a list of length.
 
 
 \end{document}

@@ -16,10 +16,10 @@ class Polynomial_Multiplier:
     def __init__(self, poly_1, poly_2, variable="x"):
         self.poly_1 = poly_1
         self.poly_2 = poly_2
-        self.poly_1_len = len(self.poly_1)
-        self.poly_2_len = len(self.poly_2)
+        self.poly_1_degree = len(self.poly_1) - 1
+        self.poly_2_degree = len(self.poly_2) - 1
         self.variable = variable
-        self.expanded_product_list = [0] * (self.poly_1_len + self.poly_2_len - 1)
+        self.product = [0] * (self.poly_1_degree + self.poly_2_degree + 1)
 
     def multiply(self):
         """
@@ -28,9 +28,9 @@ class Polynomial_Multiplier:
         Returns:
             Polynomial_Multiplier: The current instance of the Polynomial_Multiplier class.
         """
-        for i in range(self.poly_1_len):
-            for j in range(self.poly_2_len):
-                self.expanded_product_list[i + j] += self.poly_1[i] * self.poly_2[j]
+        for i in range(self.poly_1_degree + 1):
+            for j in range(self.poly_2_degree + 1):
+                self.product[i + j] += self.poly_1[i] * self.poly_2[j]
         return self
 
     def print_result(self):
@@ -38,23 +38,23 @@ class Polynomial_Multiplier:
         Prints the result polynomial in a formatted way.
         """
         formatted_expanded_product = []
-        result_len = len(self.expanded_product_list)
+        result_len = len(self.product)
         for i in range(result_len):
-            if self.expanded_product_list[i] != 0:
+            if self.product[i] != 0:
                 degree = result_len - i - 1
                 if degree == 0:
                     formatted_expanded_product.append(
-                        str(self.expanded_product_list[i])
+                        str(self.product[i])
                     )
                 elif degree == 1:
                     formatted_expanded_product.append(
-                        f"{self.expanded_product_list[i]}{self.variable}"
+                        f"{self.product[i]}{self.variable}"
                     )
                 else:
                     formatted_expanded_product.append(
-                        f"{self.expanded_product_list[i]}{self.variable}^{degree}"
+                        f"{self.product[i]}{self.variable}^{degree}"
                     )
         print(" + ".join(formatted_expanded_product))
 
 
-Polynomial_Multiplier([3, 2], [3, 0, 4, 0, 5]).multiply().print_result()
+Polynomial_Multiplier([1, 3], [2, -5, 8]).multiply().print_result()
